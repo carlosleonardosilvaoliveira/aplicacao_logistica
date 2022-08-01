@@ -1,0 +1,22 @@
+<tr>
+  <form name="myform" id ="myform" method="POST">
+    <input type="hidden" name="n_terminal" value="{{n_terminal}}" />
+    <td>{{n_terminal}}</td>
+    <td>{{ponto}}</td>
+    <td>{{n_serie}}</td>
+    <td id="tb-status">{{disp_atual}}</td>
+    <td>{{wo}}</td>
+    <td style="font-size: 0.8rem;">{{data_chamado}}</td>
+    <td>
+      <select class="form-select form-select-sm" name="email"  onchange="this.form.submit()">
+        <option selected>{{email}}</option>
+        <option value="Sim">Sim</option>
+        <option value="Não">Não</option>
+      </select>
+    </td>
+    <td><textarea name="obs" rows="1">{{obs}}</textarea></td>
+  </form>
+  <td>{{req}}</td>
+  <td>{{uf}}</td>
+  <td></td>
+</tr>

@@ -1,0 +1,8 @@
+{
+    "name": "saa/autoatendimento",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    }
+}

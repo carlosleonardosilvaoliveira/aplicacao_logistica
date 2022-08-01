@@ -1,0 +1,38 @@
+
+<section>
+    <form method="get">
+        <div class="row my-3">
+            <div class="col-3">
+                <label style="color: white;">Pesquisar</label>
+                <input type="text" name="search" class="form-control">
+            </div>
+            <div class="col d-flex align-items-end">
+                <button type="submit" class="btn btn-primary">Pesquisar</button>
+            </div>
+        </div>
+    </form>
+</section>
+
+<hr>
+
+{{pagination}}
+
+<table class="table table-light table-striped text-center sortable">
+    <thead>
+        <tr>
+            <th>Nº Terminal</th>
+            <th>Agência</th>
+            <th>Nº Série</th>
+            <th>Status</th>
+            <th>Chamado (WO)</th>
+            <th>Data Chamado</th>
+            <th>E-mail</th>
+            <th>Obs</th>
+            <th>Requisição (REQ)</th>
+            <th>UF</th>
+        </tr>
+    </thead>
+    <tbody>
+    {{itens}}
+    </tbody>
+</table>

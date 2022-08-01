@@ -1,0 +1,50 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-dark w-100 p-0">
+    <ul class="nav nav-tabs bg-dark bn">
+        {{links}}
+    </ul>
+
+    <ul class="nav justify-content-end bn">
+        <li class="nav-item">
+            <a href="{{URL}}/equipamentsRS/import" class="nav-link text-light modal_import">SIMGA</a>
+        </li>
+        <li class="nav-item">
+            <a href="{{URL}}/equipamentsRS/importChamados" class="nav-link text-light modal_chamados_import">CHAMADOS</a>
+        </li>
+        <li>
+            <a href="{{URL}}/logout">
+                <button type="button" class="btn">Sair</button>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<!-- Modal Import -->
+<div class="modal fade" id="import" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content"></div>
+    </div>
+</div>
+
+<!-- Modal Import Chamados-->
+<div class="modal fade" id="importChamados" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content"></div>
+    </div>
+</div>
+
+<script>
+    $('.modal_import').on('click', function (event){
+        event.preventDefault();
+
+        $("#import").modal('show').find('.modal-content').load($(this).attr('href'));
+    });
+</script>
+
+<script>
+    $('.modal_chamados_import').on('click', function (event){
+        event.preventDefault();
+
+        $("#importChamados").modal('show').find('.modal-content').load($(this).attr('href'));
+    });
+</script>
