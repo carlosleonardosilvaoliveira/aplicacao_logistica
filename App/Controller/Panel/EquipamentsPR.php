@@ -152,7 +152,7 @@ class EquipamentsPR extends Page
         header("Refresh: 0");
     }
 
-    public static function getStatus($request)
+    /*public static function getStatus($request)
     {
         $queryParams = $request->getQueryParams();
 
@@ -163,5 +163,5 @@ class EquipamentsPR extends Page
                 return Alert::getSuccess('Arquivo importado com sucesso');
                 break;
         }
-    }
+    }*/
 }

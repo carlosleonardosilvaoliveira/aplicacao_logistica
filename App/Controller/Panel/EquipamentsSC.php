@@ -160,7 +160,7 @@ class EquipamentsSC extends Page
 
         switch ($queryParams['status']) {
             case 'imported':
-                return Alert::getSuccess('Arquivo importado com sucesso');
+                return Alert::getSuccess('Arquivo importado com sucesso!');
                 break;
         }
     }*/
