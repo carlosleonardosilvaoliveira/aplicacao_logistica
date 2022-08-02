@@ -149,10 +149,10 @@ class EquipamentsSC extends Page
 
         $obEquipaments->update();
 
-        $request->getRouter()->redirect('/equipamentsSC?status=atualizado');
+        header("Refresh: 0");
     }
 
-    public static function getStatus($request)
+    /*public static function getStatus($request)
     {
         $queryParams = $request->getQueryParams();
 
@@ -163,5 +163,6 @@ class EquipamentsSC extends Page
                 return Alert::getSuccess('Arquivo importado com sucesso');
                 break;
         }
-    }
+    }*/
+
 }

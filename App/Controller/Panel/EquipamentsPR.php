@@ -149,7 +149,7 @@ class EquipamentsPR extends Page
 
         $obEquipaments->update();
 
-        $request->getRouter()->redirect('/equipamentsPR?status=atualizado');
+        header("Refresh: 0");
     }
 
     public static function getStatus($request)
