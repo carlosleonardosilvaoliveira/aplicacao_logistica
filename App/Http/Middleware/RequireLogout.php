@@ -9,7 +9,7 @@ class RequireLogout
     public function handle($request, $next)
     {
         if(SessionLogin::isLogged()) {
-            $request->getRouter()->redirect('/');
+            $request->getRouter()->redirect('/equipamentsRS');
         }
 
         return $next($request);

@@ -39,7 +39,7 @@ class Login extends Page
 
         SessionLogin::login($obUser);
 
-        $request->getRouter()->redirect('/');
+        $request->getRouter()->redirect('/equipamentsRS');
     }
 
     public static function setLogout($request)

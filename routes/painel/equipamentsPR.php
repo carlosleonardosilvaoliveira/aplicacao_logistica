@@ -56,3 +56,12 @@ $obRouter->post('equipamentsPR',[
         return new Response(200,Panel\EquipamentsPR::setEditEmail($request));
     }
 ]);
+
+$obRouter->post('equipamentsPR', [
+    'middlewares' => [
+        'required-login'
+    ],
+    function($request){
+        return new Response(200, Panel\EquipamentsPR::setExport($request));
+    }
+]);

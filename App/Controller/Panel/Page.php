@@ -8,10 +8,6 @@ use App\Utils\View;
 class Page
 {
     private static $modules = [
-        'home' => [
-            'label' => 'Home',
-            'link'  => URL.'/'
-        ],
         'terminaisRS' => [
             'label' => 'Terminais RS',
             'link'  => URL.'/equipamentsRS'

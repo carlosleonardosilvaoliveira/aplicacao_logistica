@@ -49,7 +49,7 @@ class EquipamentsRS extends Page
                 'disp_atual' => $obEquipaments->disp_atual,
                 'req' => $obEquipaments->req,
                 'wo' => $obEquipaments->wo,
-                'data_chamado' => $obEquipaments->data_chamado,
+                'data_chamado' => substr($obEquipaments->data_chamado, 0, -3),
                 'obs'  => $obEquipaments->obs,
                 'email' => $obEquipaments->email ? $obEquipaments->email : 'Não'
             ]);
@@ -130,6 +130,10 @@ class EquipamentsRS extends Page
             }
         } elseif(isset($_POST["ImportChamados"])) {
             self::setImportChamados($request);
+
+        } elseif(isset($_POST["Export"])){
+            self::setExport($request);
+
         } else {
             self::setEditEmail($request);
         }
@@ -137,19 +141,45 @@ class EquipamentsRS extends Page
 
     public static function setEditEmail($request)
     {
+        if(isset($_POST["n_terminal"])){
 
-        $obEquipaments = new EntityEquipaments();
+            $obEquipaments = new EntityEquipaments();
 
-        $postVars = $request->getPostVars();
+            $postVars = $request->getPostVars();
 
-        $obEquipaments->n_terminal = $postVars['n_terminal'];
+            $obEquipaments->n_terminal = $postVars['n_terminal'];
 
-        $obEquipaments->email   = $postVars['email'] ?? '';
-        $obEquipaments->obs     = $postVars['obs'] ?? '';
+            $obEquipaments->email   = $postVars['email'] ?? '';
+            $obEquipaments->obs     = $postVars['obs'] ?? '';
 
-        $obEquipaments->update();
+            $obEquipaments->update();
 
-        header("Refresh: 0");
+            header("Refresh: 0");
+        }
+    }
+
+    public static function setExport($request)
+    {
+        if(isset($_POST["Export"])) {
+
+            header('Content-Type: text/csv; charset=utf-8');
+            header('Content-Disposition: attachment; filename=indisponiveisRS.csv');
+
+            $obEquipaments = EntityEquipaments::getEquipaments("uf = 'RS' AND NOT disp_atual = 'Disponível'", null, null, "n_terminal, ponto, n_serie, status, wo, data_chamado, email, obs, req, uf")->fetchAll();
+
+            $delimiter = ";";
+
+            $output = fopen("php://output", "w");
+            $fields = array('Terminal', 'Agência', 'Série', 'Status', 'WO', 'Data_Chamado', 'E-mail', 'Observação', 'REQ', 'UF');
+            fputcsv($output, $fields, $delimiter);
+
+            foreach($obEquipaments as $row){
+                $lineData = array($row['n_terminal'], $row['ponto'], $row['n_serie'], $row['status'], $row['wo'], $row['data_chamado'], $row['email'], $row['obs'], $row['req'], $row['uf']);
+                fputcsv($output, $lineData, $delimiter);
+            }
+
+            fclose($output);
+        }
     }
 
     /*public static function getStatus($request)
