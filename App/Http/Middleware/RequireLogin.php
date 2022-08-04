@@ -9,7 +9,7 @@ class RequireLogin
     public function handle($request, $next)
     {
         if(!SessionLogin::isLogged()) {
-            $request->getRouter()->redirect('/login');
+            $request->getRouter()->redirect('/');
         }
 
         return $next($request);

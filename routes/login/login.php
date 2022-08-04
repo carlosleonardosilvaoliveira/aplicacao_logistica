@@ -4,7 +4,7 @@
 use App\Http\Response;
 use App\Controller\Login;
 
-$obRouter->get('/login', [
+$obRouter->get('/', [
     'middlewares' => [
         'required-logout'
     ],
@@ -13,7 +13,7 @@ $obRouter->get('/login', [
     }
 ]);
 
-$obRouter->post('/login', [
+$obRouter->post('/', [
     'middlewares' => [
         'required-logout'
     ],

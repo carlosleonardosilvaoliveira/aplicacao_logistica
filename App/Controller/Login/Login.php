@@ -46,6 +46,6 @@ class Login extends Page
     {
         SessionLogin::logout();
 
-        $request->getRouter()->redirect('/login');
+        $request->getRouter()->redirect('/');
     }
 }
